@@ -1,0 +1,28 @@
+/* CSS Reset for Button Element */
+/* Additional styling for the buttons container */
+
+.grand_father{
+    
+     display: block;
+     position: relative;
+    
+ }
+ .images {
+   
+    /* position: relative; */
+    display: block;
+    border: 1px solid black;
+    height: 500px;
+    width: 800px;
+    position: relative;
+    overflow: hidden; /* Prevent content from overflowing */
+}
+.father {
+     display: block;
+     position: relative;
+}
+
+
+
+
+

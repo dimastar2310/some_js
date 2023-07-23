@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Hello OpenCV.js</title>
+    <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+    <h2>Hello OpenCV.js</h2>
+    <p id="status">OpenCV.js is loading...</p>
+
+        <div class="grand_father">
+            <div class="images">
+            <img  src ="" alt="No Image" />
+        </div>
+         
+            <div class="father">
+                <input class="favorite styled" type="button" value="Add Image" onclick="addImage()">
+                <input class="favorite styled" type="button" value="LEFT">  
+                <input class="favorite styled" type="button" value="RIGHT">  
+                <input class="angle" type="button" value="ANGLE:" onclick="angleClicked()">
+                <input class="user_input" type="text" placeholder="Enter angle" id="angleInput">
+
+         </div>
+        </div>
+    
+    <script>
+        // Function to be called once OpenCV.js is ready
+        function onOpenCvReady() {
+            document.getElementById('status').innerText = 'OpenCV.js is ready.';
+            
+            // Your OpenCV.js code can be placed here or in other script tags below
+            const imageByClass = document.querySelector('.my-image'); // Select by class
+        }
+
+        function angleClicked(){
+
+            console.log("Button clicked!");
+            const user_input = document.querySelector('.user_input'); // get the input value
+            console.log(user_input.value);
+        }
+
+        function addImage() {
+                const grandFatherDiv = document.querySelector('.grand_father'); // Select by class
+                const imagesDiv = document.querySelector('.images'); // Select by class
+
+                const imageElement = document.createElement('img');
+                imageElement.src = './images/dov.png'; // Replace '.jpg' with the correct image extension
+                imageElement.alt = 'A Dove Image'; // Add a descriptive alt text for accessibility
+                imageElement.style.height = '50px';
+                imageElement.style.width = '50px';
+
+                // Generate random position coordinates within the "images" div
+                const maxX = imagesDiv.clientWidth - imageElement.offsetWidth;
+                const maxY = imagesDiv.clientHeight - imageElement.offsetHeight;
+                const randomX = Math.floor(Math.random() * maxX);
+                const randomY = Math.floor(Math.random() * maxY);
+
+                // Set the random position as CSS styles
+                imageElement.style.position = 'absolute';
+                imageElement.style.left = randomX + 'px';
+                imageElement.style.top = randomY + 'px';
+
+                imagesDiv.appendChild(imageElement);
+}
+
+         
+
+        // Load OpenCV.js asynchronously
+        const script = document.createElement('script');
+        script.src = 'https://docs.opencv.org/3.4.0/opencv.js';
+        script.async = true;
+        script.onload = onOpenCvReady;
+        document.head.appendChild(script);
+    </script>
+</body>
+</html>
